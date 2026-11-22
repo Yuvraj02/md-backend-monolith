@@ -1,0 +1,16 @@
+# Secrets — never commit
+**/.env
+**/.env.*
+!**/.env.example
+**/connection-string.txt
+**/aws-data-details.txt
+
+# Build / local
+**/bin/
+**/dumps/
+**/*.sql.gz
+**/.DS_Store
+
+# Old workspace noise if present
+go.work
+go.work.sum
