@@ -12,10 +12,10 @@ make run
 
 ## Docker (Render / Fly / Railway)
 
-Build from this directory (`backend/`):
+Build from repo root (Dockerfile at `/Dockerfile`):
 
 ```bash
-docker build -f md-backend-monolith/Dockerfile -t md-backend-monolith .
+docker build -t md-backend-monolith .
 ```
 
 Listen port: set `HTTP_PORT` (defaults to `8080`). On Render, also set `HTTP_PORT` to the same value as `PORT` (usually `10000`), or set `HTTP_PORT=$PORT` in the dashboard.
