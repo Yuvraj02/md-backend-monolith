@@ -41,6 +41,7 @@ func New(addr string, blogs *blog.Service, articles *article.Service, log *slog.
 	mux.HandleFunc("GET /v1/blogs/{blogID}/articles/{articleID}", s.handleGetArticle)
 	mux.Handle("POST /v1/blogs/{blogID}/articles", s.requireOwner(http.HandlerFunc(s.handleCreateArticle)))
 	mux.Handle("PATCH /v1/blogs/{blogID}/articles/{articleID}", s.requireOwner(http.HandlerFunc(s.handleUpdateArticle)))
+	// Owner-only: public callers without X-Owner-Secret get 401.
 	mux.Handle("DELETE /v1/blogs/{blogID}/articles/{articleID}", s.requireOwner(http.HandlerFunc(s.handleDeleteArticle)))
 	mux.HandleFunc("POST /v1/blogs/{blogID}/articles/{articleID}/upvotes", s.handleUpvoteArticle)
 	mux.Handle("POST /v1/blogs/{blogID}/articles/{articleID}/publish", s.requireOwner(http.HandlerFunc(s.handlePublishArticle)))
